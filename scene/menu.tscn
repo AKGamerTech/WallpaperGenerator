@@ -7,13 +7,14 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = -960.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_lti8b")
 start_button = NodePath("VBoxContainer/VBoxContainer/Start")
 settings_button = NodePath("VBoxContainer/VBoxContainer/Settings")
 background_settings = NodePath("Background_Settings")
-exit_settings = NodePath("Background_Settings/VBoxContainer/exit_settings")
+exit_settings = NodePath("Background_Settings/exit_settings")
 about_button = NodePath("VBoxContainer/VBoxContainer/About")
 exit_button = NodePath("VBoxContainer/VBoxContainer/Exit")
 
@@ -80,25 +81,73 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 color = Color(0, 0, 0, 1)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Background_Settings" unique_id=1793611579]
+[node name="SettingsText" type="Label" parent="Background_Settings" unique_id=1729525932]
 layout_mode = 0
-offset_right = 1917.0
-offset_bottom = 1080.0
-alignment = 1
-
-[node name="SettingsText" type="Label" parent="Background_Settings/VBoxContainer" unique_id=1729525932]
-layout_mode = 2
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 520.0
+offset_bottom = 120.0
 theme_override_font_sizes/font_size = 64
 text = "Settings"
 horizontal_alignment = 1
 
-[node name="Control" type="Control" parent="Background_Settings/VBoxContainer" unique_id=907888465]
-custom_minimum_size = Vector2(0, 50)
+[node name="SettingsTabs" type="VBoxContainer" parent="Background_Settings" unique_id=1793611579]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 133.0
+offset_right = 514.0
+offset_bottom = 958.0
+
+[node name="KeyboardButton" type="Button" parent="Background_Settings/SettingsTabs" unique_id=360756681]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Keyboard"
+
+[node name="KeyboardSettings" type="VBoxContainer" parent="Background_Settings" unique_id=1252849921]
+layout_mode = 0
+offset_left = 543.0
+offset_top = 29.0
+offset_right = 1893.0
+offset_bottom = 1059.0
+
+[node name="Label" type="Label" parent="Background_Settings/KeyboardSettings" unique_id=1571376155]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 64
+text = "Function / Key"
+
+[node name="Control" type="Control" parent="Background_Settings/KeyboardSettings" unique_id=1198834869]
+custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 
-[node name="exit_settings" type="Button" parent="Background_Settings/VBoxContainer" unique_id=1711952883]
+[node name="HBoxContainer" type="HBoxContainer" parent="Background_Settings/KeyboardSettings" unique_id=702517753]
 layout_mode = 2
+
+[node name="Show_HideMenu" type="Label" parent="Background_Settings/KeyboardSettings/HBoxContainer" unique_id=1583194054]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Show / Hide Menu"
+
+[node name="Control" type="Control" parent="Background_Settings/KeyboardSettings/HBoxContainer" unique_id=1012651752]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Background_Settings/KeyboardSettings/HBoxContainer" unique_id=1867916059]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Tab"
+
+[node name="exit_settings" type="Button" parent="Background_Settings" unique_id=1711952883]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 950.0
+offset_right = 259.0
+offset_bottom = 1043.0
 size_flags_horizontal = 4
 offset_transform_enabled = true
 theme_override_font_sizes/font_size = 57
-text = "exit"
+text = "Exit"
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=334983823]
+offset = Vector2(960, 540)

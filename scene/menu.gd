@@ -9,6 +9,7 @@ extends Control
 @export var exit_button: Button
 
 func _ready():
+	background_settings.visible = false
 	start_button.pressed.connect(start)
 	settings_button.pressed.connect(settings)
 	exit_settings.pressed.connect(settings_exit)
