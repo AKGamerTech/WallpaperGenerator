@@ -1,0 +1,104 @@
+[gd_scene format=3 uid="uid://dktug5xfwjfai"]
+
+[ext_resource type="Script" uid="uid://bmrqxg8l84jjl" path="res://main_menu.gd" id="1_06t4h"]
+
+[node name="MainMenu" type="Control" unique_id=26750026 node_paths=PackedStringArray("start_button", "settings_button", "background_settings", "exit_settings", "about_button", "exit_button")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_06t4h")
+start_button = NodePath("VBoxContainer/VBoxContainer/Start")
+settings_button = NodePath("VBoxContainer/VBoxContainer/Settings")
+background_settings = NodePath("Background_Settings")
+exit_settings = NodePath("Background_Settings/VBoxContainer/exit_settings")
+about_button = NodePath("VBoxContainer/VBoxContainer/About")
+exit_button = NodePath("VBoxContainer/VBoxContainer/Exit")
+
+[node name="Background" type="ColorRect" parent="." unique_id=874970402]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1328662691]
+z_index = 1
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=1412505916]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 115
+text = "Wallpaper Generator"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer" unique_id=1025407028]
+layout_mode = 2
+
+[node name="Start" type="Button" parent="VBoxContainer/VBoxContainer" unique_id=130170705]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.0
+theme_override_font_sizes/font_size = 67
+text = " Start "
+
+[node name="Settings" type="Button" parent="VBoxContainer/VBoxContainer" unique_id=259342619]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.0
+theme_override_font_sizes/font_size = 67
+text = " Settings "
+
+[node name="About" type="Button" parent="VBoxContainer/VBoxContainer" unique_id=31481241]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.0
+theme_override_font_sizes/font_size = 67
+text = " About "
+
+[node name="Exit" type="Button" parent="VBoxContainer/VBoxContainer" unique_id=1471529243]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.0
+theme_override_font_sizes/font_size = 67
+text = " Exit "
+
+[node name="Background_Settings" type="ColorRect" parent="." unique_id=2080327393]
+visible = false
+z_index = 2
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0, 0, 0, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background_Settings" unique_id=1793611579]
+layout_mode = 0
+offset_right = 1917.0
+offset_bottom = 1080.0
+alignment = 1
+
+[node name="SettingsText" type="Label" parent="Background_Settings/VBoxContainer" unique_id=1729525932]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Settings"
+horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="Background_Settings/VBoxContainer" unique_id=907888465]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="exit_settings" type="Button" parent="Background_Settings/VBoxContainer" unique_id=1711952883]
+layout_mode = 2
+size_flags_horizontal = 4
+offset_transform_enabled = true
+theme_override_font_sizes/font_size = 57
+text = "exit"
