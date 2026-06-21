@@ -184,6 +184,7 @@ size = Vector2i(1892, 750)
 content_scale_factor = 1.25
 dialog_hide_on_ok = true
 access = 2
+filters = PackedStringArray("*.png,*.jpg,*.jpeg;Image Files;image/png,image/jpeg")
 use_native_dialog = true
 
 [node name="Checkifoutside" type="Area2D" parent="." unique_id=1970135324]

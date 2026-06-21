@@ -16,24 +16,11 @@ extends Control
 @export var bg_color_picker_B: ColorPickerButton
 @export var random_color: CheckBox
 
-
-
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_hide"):
 		Configs.visible = !Configs.visible
 
-func _ready():
-	generate_button.pressed.connect(spawn)
-	save_button.pressed.connect(save_picture)
-	area_2d.body_exited.connect(throwitback)
-	
-	
-func throwitback(body: PhysicsBody2D):
-	body.position = Vector2(randf_range(0, 1920), randf_range(0,1080))
-
-func save_picture():
-	save_file_dialog.popup_centered() 
-
+#region Spawner code
 func spawn():
 	for each in texture_rect.get_children():
 		each.queue_free()
@@ -54,6 +41,13 @@ func spawn():
 			object_sprite.modulate = Color(randf(), randf(), randf())
 		texture_rect.add_child(object)
 
+func throwitback(body: PhysicsBody2D):
+	body.position = Vector2(randf_range(0, 1920), randf_range(0,1080))
+#endregion 
+
+#region Picture saving code
+func save_picture():	
+	save_file_dialog.popup_centered() 
 
 func _on_save_file_dialog_file_selected(path: String) -> void:
 	Configs.visible = !Configs.visible
@@ -65,5 +59,17 @@ func _on_save_file_dialog_file_selected(path: String) -> void:
 	## Crop the image so we only have canvas area.
 	#var cropped_image = img.get_region(Vector2(drawing_area.position, drawing_area.size))
 	# Save the image with the passed in path we got from the save dialog.
-	img.save_png(path + ".png")
+	if path.contains(".png"):
+			img.save_png(path)
+	elif path.contains(".jpg") or path.contains(".jpeg"):
+			img.save_jpg(path)
+	else :
+			img.save_png(path + ".png")
 	Configs.visible = !Configs.visible
+#endregion 
+
+#region All the connects
+func _ready():
+	generate_button.pressed.connect(spawn)
+	save_button.pressed.connect(save_picture)
+	area_2d.body_exited.connect(throwitback)
