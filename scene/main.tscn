@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://p5lijd14jur0"]
 
-[ext_resource type="Script" uid="uid://bbqj43ygltip8" path="res://background.gd" id="2_8k4eg"]
-[ext_resource type="Texture2D" uid="uid://duux2qhypwmwu" path="res://heart.svg" id="2_a6u6v"]
+[ext_resource type="Script" uid="uid://bbqj43ygltip8" path="res://scene/main.gd" id="1_v0l8b"]
+[ext_resource type="Texture2D" uid="uid://duux2qhypwmwu" path="res://heart.svg" id="2_wp4xf"]
 
 [sub_resource type="Gradient" id="Gradient_8k4eg"]
 offsets = PackedFloat32Array(0)
@@ -46,7 +46,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("2_8k4eg")
+script = ExtResource("1_v0l8b")
 h_slider = NodePath("Configs/VBoxContainer/HSlider")
 Configs = NodePath("Configs")
 generate_button = NodePath("Configs/VBoxContainer/Generate")
@@ -117,7 +117,7 @@ layout_mode = 2
 [node name="Heart" type="TextureButton" parent="Configs/VBoxContainer/HBoxContainer" unique_id=1901910339]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-texture_normal = ExtResource("2_a6u6v")
+texture_normal = ExtResource("2_wp4xf")
 ignore_texture_size = true
 stretch_mode = 0
 

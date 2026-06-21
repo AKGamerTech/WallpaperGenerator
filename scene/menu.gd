@@ -16,7 +16,7 @@ func _ready():
 	exit_button.pressed.connect(exit)
 	
 func start() :
-	get_tree().change_scene_to_file("res://background_generator.tscn")
+	get_tree().change_scene_to_file("res://scene/main.tscn")
 
 func settings():
 	background_settings.visible = !background_settings.visible

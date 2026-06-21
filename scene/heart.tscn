@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://b15ehv3t6do7d"]
 
-[ext_resource type="Texture2D" uid="uid://duux2qhypwmwu" path="res://heart.svg" id="1_cixvg"]
+[ext_resource type="Texture2D" uid="uid://duux2qhypwmwu" path="res://heart.svg" id="1_ncdrx"]
 
 [node name="Heart" type="RigidBody2D" unique_id=1469444663]
 gravity_scale = 0.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1466896443]
-texture = ExtResource("1_cixvg")
+texture = ExtResource("1_ncdrx")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=392692784]
 polygon = PackedVector2Array(-153, -305.1, -153, -300.5, -225.4, -279, -229.8, -279, -292.7, -224, -296.5, -224, -333.5, -141, -337.9, -141, -339, -54.100006, -339, -45.700012, -291, 51.299988, -291, 55.299988, -46, 290.2, -46, 296, 13.5, 302, 22.600006, 302, 65.600006, 278, 69.20001, 278, 292.2, 51, 296, 51, 337, -60, 343.59998, -60, 313, -191.1, 313, -195.6, 272, -244.7, 272, -247.5, 221, -279.6, 221, -282.7, 143.29999, -303, 103.100006, -303, 0.8999939, -263.7, -54, -291.2, -54, -295)

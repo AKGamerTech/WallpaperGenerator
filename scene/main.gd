@@ -25,7 +25,7 @@ func spawn():
 	for each in texture_rect.get_children():
 		each.queue_free()
 	for each in h_slider.value:
-		var object: RigidBody2D = preload("res://heart.tscn").instantiate()
+		var object: RigidBody2D = preload("res://scene/heart.tscn").instantiate()
 		object.position = Vector2(randf_range(0, 1920), randf_range(0,1080))
 		var object_sprite: Sprite2D = object.find_child("Sprite2D")
 		var object_collision: CollisionPolygon2D = object.find_child("CollisionPolygon2D")

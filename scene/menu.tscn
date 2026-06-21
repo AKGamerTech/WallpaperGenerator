@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dktug5xfwjfai"]
 
-[ext_resource type="Script" uid="uid://bmrqxg8l84jjl" path="res://main_menu.gd" id="1_06t4h"]
+[ext_resource type="Script" uid="uid://bmrqxg8l84jjl" path="res://scene/menu.gd" id="1_lti8b"]
 
 [node name="MainMenu" type="Control" unique_id=26750026 node_paths=PackedStringArray("start_button", "settings_button", "background_settings", "exit_settings", "about_button", "exit_button")]
 layout_mode = 3
@@ -9,7 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_06t4h")
+script = ExtResource("1_lti8b")
 start_button = NodePath("VBoxContainer/VBoxContainer/Start")
 settings_button = NodePath("VBoxContainer/VBoxContainer/Settings")
 background_settings = NodePath("Background_Settings")
