@@ -1,17 +1,13 @@
 [gd_scene format=3 uid="uid://p5lijd14jur0"]
 
 [ext_resource type="Script" uid="uid://bbqj43ygltip8" path="res://scene/main.gd" id="1_v0l8b"]
+[ext_resource type="Gradient" uid="uid://ddlyqw51obumt" path="res://new_gradient.res" id="2_brvut"]
 [ext_resource type="Texture2D" uid="uid://duux2qhypwmwu" path="res://heart.svg" id="2_wp4xf"]
 [ext_resource type="Theme" uid="uid://cwp4liuobwte7" path="res://big_size_theme.theme" id="3_wp4xf"]
 
-[sub_resource type="Gradient" id="Gradient_8k4eg"]
-offsets = PackedFloat32Array(0)
-colors = PackedColorArray(1, 1, 1, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_afmkk"]
-gradient = SubResource("Gradient_8k4eg")
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_wp4xf"]
+gradient = ExtResource("2_brvut")
 width = 1920
-height = 1080
 
 [sub_resource type="Gradient" id="Gradient_y1t3g"]
 colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0)
@@ -30,7 +26,7 @@ size = Vector2(109, 1798)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a6u6v"]
 size = Vector2(2652, 1801)
 
-[node name="Main" type="Control" unique_id=2029922398 node_paths=PackedStringArray("Configs", "generate_button", "save_button", "save_file_dialog", "texture_rect", "area_2d", "background", "heart_color_picker", "bg_color_picker_A", "bg_color_picker_B", "random_color_box", "random_type", "amount_label", "amount_slider")]
+[node name="Main" type="Control" unique_id=2029922398 node_paths=PackedStringArray("Configs", "generate_button", "save_button", "save_file_dialog", "texture_rect", "area_2d", "background", "heart_color_picker", "random_color_box", "random_type", "amount_label", "amount_slider", "one_color", "bg_color_picker", "bg_color_picker_a", "bg_color_picker_b", "bg_color_picker_c", "bg_color_picker_d")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -46,19 +42,24 @@ texture_rect = NodePath("SpawnArea")
 area_2d = NodePath("Checkifoutside")
 background = NodePath("Background")
 heart_color_picker = NodePath("Configs/VBoxContainer/HeartColorPicker")
-bg_color_picker_A = NodePath("Configs/VBoxContainer/BGColorPickers/BGColorPickerA")
-bg_color_picker_B = NodePath("Configs/VBoxContainer/BGColorPickers/BGColorPickerB")
 random_color_box = NodePath("Configs/VBoxContainer/RandomContainer/RandomColor")
 random_type = NodePath("Configs/VBoxContainer/RandomContainer/RandomType")
 amount_label = NodePath("Configs/VBoxContainer/Amount")
 amount_slider = NodePath("Configs/VBoxContainer/AmountSlider")
 index = 1
+one_color = NodePath("Configs/VBoxContainer/OneColor")
+bg_color_picker = NodePath("Configs/VBoxContainer/BGColorPicker")
+bg_color_picker_a = NodePath("Configs/VBoxContainer/BGColorPickers/BGColorPickerA")
+bg_color_picker_b = NodePath("Configs/VBoxContainer/BGColorPickers/BGColorPickerB")
+bg_color_picker_c = NodePath("Configs/VBoxContainer/BGColorPickers2/BGColorPickerC")
+bg_color_picker_d = NodePath("Configs/VBoxContainer/BGColorPickers2/BGColorPickerD")
 
 [node name="Background" type="TextureRect" parent="." unique_id=505215541]
+custom_minimum_size = Vector2(0, 1080)
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-texture = SubResource("GradientTexture2D_afmkk")
+texture = SubResource("GradientTexture1D_wp4xf")
 
 [node name="SpawnArea" type="TextureRect" parent="." unique_id=1592526754]
 z_index = 1
@@ -131,23 +132,41 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 46
 text = "BG Color"
 
-[node name="CheckButton" type="CheckButton" parent="Configs/VBoxContainer" unique_id=1994191941]
+[node name="OneColor" type="CheckButton" parent="Configs/VBoxContainer" unique_id=1994191941]
 layout_mode = 2
 theme_override_constants/h_separation = 8
 theme_override_font_sizes/font_size = 32
 text = "One Color"
 expand_icon = true
 
+[node name="BGColorPicker" type="ColorPickerButton" parent="Configs/VBoxContainer" unique_id=1167503208]
+custom_minimum_size = Vector2(128, 64)
+layout_mode = 2
+color = Color(1, 1, 1, 1)
+
 [node name="BGColorPickers" type="HBoxContainer" parent="Configs/VBoxContainer" unique_id=1108423684]
 layout_mode = 2
 
 [node name="BGColorPickerA" type="ColorPickerButton" parent="Configs/VBoxContainer/BGColorPickers" unique_id=844887733]
-custom_minimum_size = Vector2(128, 128)
+custom_minimum_size = Vector2(128, 64)
 layout_mode = 2
 color = Color(1, 1, 1, 1)
 
 [node name="BGColorPickerB" type="ColorPickerButton" parent="Configs/VBoxContainer/BGColorPickers" unique_id=1025009751]
-custom_minimum_size = Vector2(128, 128)
+custom_minimum_size = Vector2(128, 64)
+layout_mode = 2
+color = Color(1, 1, 1, 1)
+
+[node name="BGColorPickers2" type="HBoxContainer" parent="Configs/VBoxContainer" unique_id=708887212]
+layout_mode = 2
+
+[node name="BGColorPickerC" type="ColorPickerButton" parent="Configs/VBoxContainer/BGColorPickers2" unique_id=1700332525]
+custom_minimum_size = Vector2(128, 64)
+layout_mode = 2
+color = Color(1, 1, 1, 1)
+
+[node name="BGColorPickerD" type="ColorPickerButton" parent="Configs/VBoxContainer/BGColorPickers2" unique_id=2075431166]
+custom_minimum_size = Vector2(128, 64)
 layout_mode = 2
 color = Color(1, 1, 1, 1)
 
@@ -204,6 +223,7 @@ filters = PackedStringArray("*.png,*.jpg,*.jpeg;Image Files;image/png,image/jpeg
 use_native_dialog = true
 
 [node name="Checkifoutside" type="Area2D" parent="." unique_id=1970135324]
+visible = false
 z_index = -10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Checkifoutside" unique_id=695067648]

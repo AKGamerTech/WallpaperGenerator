@@ -9,18 +9,22 @@ extends Control
 
 @export var background: TextureRect
 
-
 @export var heart_color_picker: ColorPickerButton
-@export var bg_color_picker_A: ColorPickerButton
-@export var bg_color_picker_B: ColorPickerButton
 @export var random_color_box: CheckBox
 @export var random_type: OptionButton
-
 
 @export var amount_label: Label
 @export var amount_slider: HSlider
 
 @export var index: int
+
+@export var one_color: CheckButton
+@export var bg_color_picker: ColorPickerButton
+@export var bg_color_picker_a: ColorPickerButton
+@export var bg_color_picker_b: ColorPickerButton
+@export var bg_color_picker_c: ColorPickerButton
+@export var bg_color_picker_d: ColorPickerButton
+
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_hide"):
@@ -33,6 +37,27 @@ func _ready():
 
 func _on_h_slider_value_changed(value: float) -> void:
 	amount_label.text = "Amount " + str(amount_slider.value)
+
+#region BG Gradient?
+func set_gradient():
+	var gradient_data := {
+	0.0: Color(0.748, 0.247, 0.0, 1.0),
+	0.5: Color.GREEN,
+	0.75: Color.VIOLET,
+	1.0: Color.BLUE,
+}
+
+	var gradient := Gradient.new()
+	gradient.offsets = gradient_data.keys()
+	gradient.colors = gradient_data.values()
+	
+
+	var gradient_texture := GradientTexture1D.new()
+	gradient_texture.width = 1920
+	gradient_texture.gradient = gradient
+
+	background.texture = gradient_texture
+#endregion 
 
 #region Spawner code
 func spawn():
@@ -49,7 +74,8 @@ func spawn():
 		object_collision.scale = Vector2.ONE * random_size
 		object.rotation_degrees = randf() * 360.0
 		if !random_color_box.button_pressed:
-			background.modulate = bg_color_picker_A.color
+			
+			set_gradient()
 			object_sprite.modulate = heart_color_picker.color
 		else:
 			background.modulate = Color(randf(), randf(), randf())
