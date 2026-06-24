@@ -17,8 +17,9 @@ extends Control
 @export var amount_slider: HSlider
 
 @export var index: int
-
-@export var one_color: CheckButton
+@export var gradient_data: Dictionary[float, Color]
+ 
+@export var bg_color_amount: OptionButton
 @export var bg_color_picker: ColorPickerButton
 @export var bg_color_picker_a: ColorPickerButton
 @export var bg_color_picker_b: ColorPickerButton
@@ -34,26 +35,83 @@ func _ready():
 	generate_button.pressed.connect(spawn)
 	save_button.pressed.connect(save_picture)
 	area_2d.body_exited.connect(throwitback)
+	bg_color_amount.item_selected.connect(refresh_color_selectors.unbind(1))
+	bg_color_picker.popup_closed.connect(refresh_color_selectors)
+	bg_color_picker_a.popup_closed.connect(refresh_color_selectors)
+	bg_color_picker_b.popup_closed.connect(refresh_color_selectors)
+	bg_color_picker_c.popup_closed.connect(refresh_color_selectors)
+	bg_color_picker_d.popup_closed.connect(refresh_color_selectors)
+
 
 func _on_h_slider_value_changed(value: float) -> void:
 	amount_label.text = "Amount " + str(amount_slider.value)
+		
 
-#region BG Gradient?
+func refresh_color_selectors() -> void:
+	var index_bg = bg_color_amount.selected
+	match index_bg:
+		0:
+			print(index_bg)
+			bg_color_picker.visible = true
+			bg_color_picker_a.visible = false
+			bg_color_picker_b.visible = false
+			bg_color_picker_c.visible = false
+			bg_color_picker_d.visible = false
+			gradient_data = {
+				0.0: bg_color_picker.color
+			}
+			set_gradient()
+		1:
+			print(index_bg)
+			bg_color_picker.visible = false
+			bg_color_picker_a.visible = true
+			bg_color_picker_b.visible = true
+			bg_color_picker_c.visible = false
+			bg_color_picker_d.visible = false
+			gradient_data = {
+				0.0: bg_color_picker_a.color,
+				1.0: bg_color_picker_d.color,
+			}
+			set_gradient()
+		2:
+			print(index_bg)
+			bg_color_picker.visible = false
+			bg_color_picker_a.visible = true
+			bg_color_picker_b.visible = true
+			bg_color_picker_c.visible = true
+			bg_color_picker_d.visible = false
+			gradient_data = {
+				0.0: bg_color_picker_a.color,
+				0.5: bg_color_picker_b.color,
+				1.0: bg_color_picker_d.color,
+			}
+			set_gradient()
+		3:
+			print(index_bg)
+			bg_color_picker.visible = false
+			bg_color_picker_a.visible = true
+			bg_color_picker_b.visible = true
+			bg_color_picker_c.visible = true
+			bg_color_picker_d.visible = true
+			gradient_data = {
+				0.0: bg_color_picker_a.color,
+				0.30: bg_color_picker_b.color,
+				0.70: bg_color_picker_c.color,
+				1.0: bg_color_picker_d.color,
+			}
+			set_gradient()
+			
+
+#region BG Gradient
 func set_gradient():
-	var gradient_data := {
-	0.0: Color(0.748, 0.247, 0.0, 1.0),
-	0.5: Color.GREEN,
-	0.75: Color.VIOLET,
-	1.0: Color.BLUE,
-}
 
 	var gradient := Gradient.new()
 	gradient.offsets = gradient_data.keys()
 	gradient.colors = gradient_data.values()
 	
-
-	var gradient_texture := GradientTexture1D.new()
+	var gradient_texture := GradientTexture2D.new()
 	gradient_texture.width = 1920
+	gradient_texture.height = 1080
 	gradient_texture.gradient = gradient
 
 	background.texture = gradient_texture
@@ -74,8 +132,6 @@ func spawn():
 		object_collision.scale = Vector2.ONE * random_size
 		object.rotation_degrees = randf() * 360.0
 		if !random_color_box.button_pressed:
-			
-			set_gradient()
 			object_sprite.modulate = heart_color_picker.color
 		else:
 			background.modulate = Color(randf(), randf(), randf())

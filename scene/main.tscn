@@ -1,13 +1,17 @@
 [gd_scene format=3 uid="uid://p5lijd14jur0"]
 
 [ext_resource type="Script" uid="uid://bbqj43ygltip8" path="res://scene/main.gd" id="1_v0l8b"]
-[ext_resource type="Gradient" uid="uid://ddlyqw51obumt" path="res://new_gradient.res" id="2_brvut"]
 [ext_resource type="Texture2D" uid="uid://duux2qhypwmwu" path="res://heart.svg" id="2_wp4xf"]
 [ext_resource type="Theme" uid="uid://cwp4liuobwte7" path="res://big_size_theme.theme" id="3_wp4xf"]
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_wp4xf"]
-gradient = ExtResource("2_brvut")
+[sub_resource type="Gradient" id="Gradient_wp4xf"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_brvut"]
+gradient = SubResource("Gradient_wp4xf")
 width = 1920
+height = 1080
 
 [sub_resource type="Gradient" id="Gradient_y1t3g"]
 colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0)
@@ -26,7 +30,7 @@ size = Vector2(109, 1798)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a6u6v"]
 size = Vector2(2652, 1801)
 
-[node name="Main" type="Control" unique_id=2029922398 node_paths=PackedStringArray("Configs", "generate_button", "save_button", "save_file_dialog", "texture_rect", "area_2d", "background", "heart_color_picker", "random_color_box", "random_type", "amount_label", "amount_slider", "one_color", "bg_color_picker", "bg_color_picker_a", "bg_color_picker_b", "bg_color_picker_c", "bg_color_picker_d")]
+[node name="Main" type="Control" unique_id=2029922398 node_paths=PackedStringArray("Configs", "generate_button", "save_button", "save_file_dialog", "texture_rect", "area_2d", "background", "heart_color_picker", "random_color_box", "random_type", "amount_label", "amount_slider", "bg_color_amount", "bg_color_picker", "bg_color_picker_a", "bg_color_picker_b", "bg_color_picker_c", "bg_color_picker_d")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -47,7 +51,7 @@ random_type = NodePath("Configs/VBoxContainer/RandomContainer/RandomType")
 amount_label = NodePath("Configs/VBoxContainer/Amount")
 amount_slider = NodePath("Configs/VBoxContainer/AmountSlider")
 index = 1
-one_color = NodePath("Configs/VBoxContainer/OneColor")
+bg_color_amount = NodePath("Configs/VBoxContainer/BGColorAmount")
 bg_color_picker = NodePath("Configs/VBoxContainer/BGColorPicker")
 bg_color_picker_a = NodePath("Configs/VBoxContainer/BGColorPickers/BGColorPickerA")
 bg_color_picker_b = NodePath("Configs/VBoxContainer/BGColorPickers/BGColorPickerB")
@@ -59,7 +63,7 @@ custom_minimum_size = Vector2(0, 1080)
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-texture = SubResource("GradientTexture1D_wp4xf")
+texture = SubResource("GradientTexture2D_brvut")
 
 [node name="SpawnArea" type="TextureRect" parent="." unique_id=1592526754]
 z_index = 1
@@ -132,12 +136,19 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 46
 text = "BG Color"
 
-[node name="OneColor" type="CheckButton" parent="Configs/VBoxContainer" unique_id=1994191941]
+[node name="BGColorAmount" type="OptionButton" parent="Configs/VBoxContainer" unique_id=1382047958]
 layout_mode = 2
-theme_override_constants/h_separation = 8
 theme_override_font_sizes/font_size = 32
-text = "One Color"
-expand_icon = true
+selected = 0
+item_count = 4
+popup/item_0/text = "1"
+popup/item_0/id = 0
+popup/item_1/text = "2"
+popup/item_1/id = 1
+popup/item_2/text = "3"
+popup/item_2/id = 2
+popup/item_3/text = "4"
+popup/item_3/id = 3
 
 [node name="BGColorPicker" type="ColorPickerButton" parent="Configs/VBoxContainer" unique_id=1167503208]
 custom_minimum_size = Vector2(128, 64)
@@ -148,11 +159,13 @@ color = Color(1, 1, 1, 1)
 layout_mode = 2
 
 [node name="BGColorPickerA" type="ColorPickerButton" parent="Configs/VBoxContainer/BGColorPickers" unique_id=844887733]
+visible = false
 custom_minimum_size = Vector2(128, 64)
 layout_mode = 2
 color = Color(1, 1, 1, 1)
 
 [node name="BGColorPickerB" type="ColorPickerButton" parent="Configs/VBoxContainer/BGColorPickers" unique_id=1025009751]
+visible = false
 custom_minimum_size = Vector2(128, 64)
 layout_mode = 2
 color = Color(1, 1, 1, 1)
@@ -161,11 +174,13 @@ color = Color(1, 1, 1, 1)
 layout_mode = 2
 
 [node name="BGColorPickerC" type="ColorPickerButton" parent="Configs/VBoxContainer/BGColorPickers2" unique_id=1700332525]
+visible = false
 custom_minimum_size = Vector2(128, 64)
 layout_mode = 2
 color = Color(1, 1, 1, 1)
 
 [node name="BGColorPickerD" type="ColorPickerButton" parent="Configs/VBoxContainer/BGColorPickers2" unique_id=2075431166]
+visible = false
 custom_minimum_size = Vector2(128, 64)
 layout_mode = 2
 color = Color(1, 1, 1, 1)
