@@ -8,12 +8,16 @@ extends VBoxContainer
 @export var bg_color_picker_b: ColorPickerButton
 @export var bg_color_picker_c: ColorPickerButton
 @export var bg_color_picker_d: ColorPickerButton
+@export var darker: CheckButton
+@export var darker_texture: TextureRect
 
 @export var random_color_box: CheckBox
 @export var bg_data: RichTextLabel
 @export var generate_button: Button
 @export var gradient_data: Dictionary[float, Color] = {0.0:Color(0.737, 0.737, 0.737)}
 
+@export var horizontal_rez: TextEdit
+@export var vertical_rez: TextEdit
 
 
 func _ready():
@@ -23,10 +27,15 @@ func _ready():
 	bg_color_picker_b.popup_closed.connect(refresh_color_selectors)
 	bg_color_picker_c.popup_closed.connect(refresh_color_selectors)
 	bg_color_picker_d.popup_closed.connect(refresh_color_selectors)
+	darker.pressed.connect(darker_func)
 	
 	generate_button.pressed.connect(spawn)
 
 #region BG Color Selectors
+func darker_func():
+	darker_texture.visible = !darker_texture.visible
+	
+
 func refresh_color_selectors():
 	var index_bg = bg_color_amount.selected
 	match index_bg:
@@ -90,8 +99,8 @@ func set_gradient():
 	gradient.colors = gradient_data.values()
 	
 	var gradient_texture := GradientTexture2D.new()
-	gradient_texture.width = 1920
-	gradient_texture.height = 1080
+	gradient_texture.width = int(horizontal_rez.text)
+	gradient_texture.height = int(vertical_rez.text)
 	gradient_texture.gradient = gradient
 
 	background.texture = gradient_texture

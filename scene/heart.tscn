@@ -3,9 +3,12 @@
 [ext_resource type="Texture2D" uid="uid://duux2qhypwmwu" path="res://heart.svg" id="1_ncdrx"]
 
 [node name="Heart" type="RigidBody2D" unique_id=1469444663]
-gravity_scale = 0.0
+freeze_mode = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1466896443]
+oversampling_with_scale = 2
+texture_filter = 6
+texture_repeat = 1
 texture = ExtResource("1_ncdrx")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=392692784]
