@@ -3,11 +3,22 @@ extends VBoxContainer
 @export var spawn_area: TextureRect
 @export var box_trap: Area2D
 
+
+
 @export var shapes_color_picker: ColorPickerButton
 @export var shapes_color_pickerA: ColorPickerButton
 @export var shapes_color_pickerB: ColorPickerButton
 @export var shapes_color_pickerC: ColorPickerButton
 @export var shapes_color_pickerD: ColorPickerButton
+
+@export var shapes_array: Array
+@onready var heart_button: TextureButton = $ShapesButtons/Heart
+@onready var plus_button: TextureButton = $ShapesButtons/Plus
+@onready var square_button: TextureButton = $ShapesButtons/Square
+const HEART = preload("res://shape/heart.tscn")
+const PLUS = preload("res://shape/plus.tscn")
+const SQUARE = preload("uid://dh4shpbmjon1p")
+
 
 @export var amount_label: Label
 @export var amount_slider: HSlider
@@ -95,8 +106,16 @@ func clear():
 
 #region Spawner code
 func spawn():
+	shapes_array.clear()
 	for each in amount_slider.value:
-		var object: RigidBody2D = preload("res://scene/heart.tscn").instantiate()
+		if heart_button.button_pressed:
+			shapes_array.append(HEART) 
+		if plus_button.button_pressed:
+			shapes_array.append(PLUS)
+		if square_button.button_pressed:
+			shapes_array.append(SQUARE)
+		var tscn_path = shapes_array.pick_random()
+		var object: RigidBody2D = (tscn_path).instantiate()
 		object.position = Vector2(randf_range(0, float(horizontal_rez.text)), randf_range(0, float(vertical_rez.text)))
 		var object_sprite: Sprite2D = object.find_child("Sprite2D")
 		var object_collision: CollisionPolygon2D = object.find_child("CollisionPolygon2D")

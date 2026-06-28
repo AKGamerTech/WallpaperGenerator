@@ -2,9 +2,14 @@
 
 [ext_resource type="Script" uid="uid://bbqj43ygltip8" path="res://scene/main.gd" id="1_v0l8b"]
 [ext_resource type="Script" uid="uid://dynmcw0d0sk58" path="res://scene/shapes.gd" id="2_0ha60"]
-[ext_resource type="Texture2D" uid="uid://duux2qhypwmwu" path="res://heart.svg" id="2_wp4xf"]
+[ext_resource type="Texture2D" uid="uid://b43hpnawsvidf" path="res://svg/small/heart.svg" id="3_p1hux"]
 [ext_resource type="Theme" uid="uid://cwp4liuobwte7" path="res://big_size_theme.theme" id="3_wp4xf"]
 [ext_resource type="Script" uid="uid://cqsti2o4ufdcw" path="res://scene/background.gd" id="4_brvut"]
+[ext_resource type="Texture2D" uid="uid://5uwfs8qrnplp" path="res://svg/small/plus.svg" id="4_of57s"]
+[ext_resource type="Texture2D" uid="uid://bm3607ttkdp70" path="res://svg/small/heartgray.svg" id="4_tqoya"]
+[ext_resource type="Texture2D" uid="uid://ddpl2dxsdwrvx" path="res://svg/small/square.svg" id="5_b5f6u"]
+[ext_resource type="Texture2D" uid="uid://c4ns1k8x2ohy6" path="res://svg/small/plusgray.svg" id="6_k65ib"]
+[ext_resource type="Texture2D" uid="uid://bcukfkqpg4x1g" path="res://svg/small/squaregray.svg" id="8_wscrc"]
 
 [sub_resource type="Gradient" id="Gradient_wp4xf"]
 offsets = PackedFloat32Array(0)
@@ -119,10 +124,9 @@ offset_right = 485.0
 offset_bottom = 1089.0
 theme_override_font_sizes/font_size = 29
 theme_override_styles/panel = SubResource("StyleBoxFlat_wp4xf")
-current_tab = 2
+current_tab = 0
 
 [node name="Shapes" type="VBoxContainer" parent="General" unique_id=1912866720 node_paths=PackedStringArray("spawn_area", "box_trap", "shapes_color_picker", "shapes_color_pickerA", "shapes_color_pickerB", "shapes_color_pickerC", "shapes_color_pickerD", "amount_label", "amount_slider", "min_size_label", "min_size_slider", "max_size_label", "max_size_slider", "shape_random_color", "shape_random_type", "shape_random_data", "generate_button", "more_button", "horizontal_rez", "vertical_rez")]
-visible = false
 layout_mode = 2
 script = ExtResource("2_0ha60")
 spawn_area = NodePath("../../SpawnArea")
@@ -153,9 +157,24 @@ layout_mode = 2
 [node name="Heart" type="TextureButton" parent="General/Shapes/ShapesButtons" unique_id=972035742]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-texture_normal = ExtResource("2_wp4xf")
+toggle_mode = true
+button_pressed = true
+texture_normal = ExtResource("3_p1hux")
+texture_pressed = ExtResource("4_tqoya")
 ignore_texture_size = true
 stretch_mode = 0
+
+[node name="Plus" type="TextureButton" parent="General/Shapes/ShapesButtons" unique_id=130372374]
+layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("4_of57s")
+texture_pressed = ExtResource("6_k65ib")
+
+[node name="Square" type="TextureButton" parent="General/Shapes/ShapesButtons" unique_id=777977048]
+layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("5_b5f6u")
+texture_pressed = ExtResource("8_wscrc")
 
 [node name="ShapesColor" type="Label" parent="General/Shapes" unique_id=1190262282]
 layout_mode = 2
@@ -341,6 +360,7 @@ theme_override_font_sizes/font_size = 32
 text = "Darker"
 
 [node name="Generate" type="VBoxContainer" parent="General" unique_id=1583180922]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 
